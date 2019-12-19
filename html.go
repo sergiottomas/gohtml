@@ -1,7 +1,13 @@
 package gohtml
 
-//return html title from pages url
-func getURLTitles(urls ...string) chan string {
+import (
+	"io/ioutil"
+	"net/http"
+	"regexp"
+)
+
+//GetURLTitles return html title from pages url
+func GetURLTitles(urls ...string) chan string {
 	c := make(chan string)
 	for _, url := range urls {
 		go func(url string) {
